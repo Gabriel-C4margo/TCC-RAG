@@ -29,8 +29,8 @@ export class ResponseWorker {
     Crie uma resposta conversacional, natural e informativa que:
     1. Responda diretamente à pergunta do usuário
     2. Use um tom amigável e conversacional
-    3. Inclua informações relevantes da pesquisa
-    4. Seja concisa mas completa (máximo 200 palavras)
+    3. Seja concisa (máximo 60 palavras)
+    4. Verifique se o usuario quer mais informações
 
     Responda no formato JSON:
     {
@@ -44,7 +44,7 @@ export class ResponseWorker {
       const response = await this.model.invoke([new HumanMessage(prompt)]);
 
       const rawContent = response.content as string;
-      
+
       // 2. Remove as marcações de código ```json...``` da string
       const cleanedContent = rawContent.replace(/```json\n|```/g, '').trim();
 

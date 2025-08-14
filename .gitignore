@@ -12,6 +12,9 @@ yarn-error.log*
 /tmp
 /out
 
+#Next
+.next/
+
 # Editor directories and files
 .idea/
 .vscode/
@@ -24,3 +27,5 @@ yarn-error.log*
 *.vspscc
 *.ntvs*
 *.js.map
+
+
