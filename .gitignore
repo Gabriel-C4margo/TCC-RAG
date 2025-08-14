@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp/
+.pnp.js
+.env
+.env*.local
+/build
+/dist
+/tmp
+/out
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosf
+*.sln.docstates
+*.bak
+*.vssscc
+*.vspscc
+*.ntvs*
+*.js.map
