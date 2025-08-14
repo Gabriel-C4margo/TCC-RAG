@@ -61,20 +61,30 @@ npm run dev
 ## 🤖 Arquitetura dos Agentes
 
 ### Agente Supervisor
-Orquestra o fluxo completo e coordena os três workers.
+Orquestra o fluxo completo e coordena os cinco workers especializados.
 
-### Worker 1 - Transcrição
+### Worker 4 - Análise de Dificuldade
+- Analisa a complexidade da pergunta
+- Determina se precisa de aprimoramento
+- Otimiza o fluxo de processamento
+
+### Worker 5 - Resposta Simples
+- Avalia se precisa de pesquisa na internet
+- Gera respostas diretas para perguntas simples
+- Otimiza tempo de resposta
+
+### Worker 1 - Aprimoramento de Prompt
 - Processa o áudio capturado
 - Melhora e estrutura o prompt
-- Identifica intenções e palavras-chave
+- Identifica intenções e palavras-chave (apenas quando necessário)
 
 ### Worker 2 - Pesquisa
-- Realiza busca inteligente baseada nos keywords
+- Realiza busca inteligente (apenas quando necessário)
 - Coleta informações relevantes
 - Organiza dados para o próximo worker
 
 ### Worker 3 - Resposta
-- Gera resposta conversacional
+- Gera resposta conversacional complexa
 - Combina informações da pesquisa
 - Otimiza para síntese de voz
 

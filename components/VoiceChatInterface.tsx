@@ -188,7 +188,7 @@ export default function VoiceChatInterface() {
               {response.processingSteps.map((step) => (
                 <div key={step.step} className="flex items-center justify-between">
                   <span className="text-white">
-                    Worker {step.step}: {step.description}
+                    Etapa {step.step}: {step.description}
                   </span>
                   <Badge
                     variant={step.status === "completed" ? "default" : "secondary"}
@@ -287,9 +287,9 @@ export default function VoiceChatInterface() {
                 <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto">
                   <span className="text-white font-bold">AI</span>
                 </div>
-                <h3 className="text-white font-medium">2. Processamento</h3>
+                <h3 className="text-white font-medium">2. Análise Inteligente</h3>
                 <p className="text-slate-300 text-sm">
-                  Nossos agentes processam sua pergunta
+                  Sistema analisa complexidade e otimiza o processamento
                 </p>
               </div>
               <div className="space-y-2">
@@ -298,7 +298,7 @@ export default function VoiceChatInterface() {
                 </div>
                 <h3 className="text-white font-medium">3. Resposta</h3>
                 <p className="text-slate-300 text-sm">
-                  Ouça a resposta personalizada
+                  Resposta otimizada baseada na complexidade
                 </p>
               </div>
             </div>
