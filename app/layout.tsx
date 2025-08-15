@@ -1,22 +1,27 @@
+import type React from "react"
+import { Space_Grotesk, DM_Sans } from "next/font/google"
+import './global.css'
 
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+})
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Chatbot por Voz com IA - LangChain & Gemini',
-  description: 'Sistema avançado de chatbot por voz usando Next.js, LangChain.js e Google Gemini 2.0 Flash',
-};
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+})
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
