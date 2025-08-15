@@ -3,6 +3,7 @@ import { SearchWorker } from "./worker2";
 import { ResponseWorker } from "./worker3";
 import { DifficultyAnalysisWorker } from "./worker4";
 import { SimpleResponseWorker } from "./worker5";
+import { getSearchStatus } from "../config/search";
 
 export class SupervisorAgent {
   private worker1: TranscriptionWorker;
@@ -26,6 +27,7 @@ export class SupervisorAgent {
     followUpSuggestions: string[];
   }> {
     const processingSteps = [];
+    const searchStatus = getSearchStatus();
 
     try {
       // Etapa 1: Análise de dificuldade
@@ -75,13 +77,21 @@ export class SupervisorAgent {
       }
 
       // Etapa 4: Pesquisa de informações (se necessário)
-      processingSteps.push({ step: currentStepIndex + 1, status: "processing", description: "Pesquisando informações...", result: {} });
+      processingSteps.push({ 
+        step: currentStepIndex + 1, 
+        status: "processing", 
+        description: `Pesquisando informações... (${searchStatus.message})`, 
+        result: {} 
+      });
       const step2Result = await this.worker2.searchInformation(
         step1Result.enhancedPrompt,
         step1Result.keywords
       );
       processingSteps[currentStepIndex].status = "completed";
-      processingSteps[currentStepIndex].result = step2Result;
+      processingSteps[currentStepIndex].result = {
+        ...step2Result,
+        searchStatus: searchStatus
+      };
       currentStepIndex++;
 
       // Etapa 5: Geração da resposta final

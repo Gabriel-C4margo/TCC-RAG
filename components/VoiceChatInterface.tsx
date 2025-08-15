@@ -179,13 +179,13 @@ export default function VoiceChatInterface() {
         </Card>
 
         {/* Processing Steps */}
-        {isProcessing && response?.processingSteps && (
+        {(isProcessing || response?.processingSteps) && (
           <Card className="bg-white/10 backdrop-blur-lg border-white/20">
             <CardHeader>
               <CardTitle className="text-white">Status dos Agentes</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {response.processingSteps.map((step) => (
+              {response?.processingSteps?.map((step) => (
                 <div key={step.step} className="flex items-center justify-between">
                   <span className="text-white">
                     Etapa {step.step}: {step.description}
@@ -195,13 +195,15 @@ export default function VoiceChatInterface() {
                     className={
                       step.status === "completed"
                         ? "bg-green-500"
+                        : step.status === "error"
+                        ? "bg-red-500"
                         : "bg-yellow-500 animate-pulse"
                     }
                   >
-                    {step.status === "completed" ? "✓" : "⏳"}
+                    {step.status === "completed" ? "✓" : step.status === "error" ? "✗" : "⏳"}
                   </Badge>
                 </div>
-              ))}
+              )) || []}
             </CardContent>
           </Card>
         )}

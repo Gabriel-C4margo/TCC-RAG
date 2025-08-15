@@ -41,12 +41,22 @@ cp .env.example .env.local
 3. **Adicione sua chave do Google Gemini:**
    - Visite: https://makersuite.google.com/app/apikey
    - Copie sua API key
+   - Adicione no arquivo `.env.local`
+
+4. **Configure a Google Custom Search API (opcional):**
+   - Visite: https://developers.google.com/custom-search/v1/introduction
+   - Crie um projeto no Google Cloud Console
+   - Ative a Custom Search API
+   - Crie credenciais (API Key)
+   - Crie um Custom Search Engine em: https://cse.google.com/
    - Adicione no arquivo `.env.local`:
 ```
 GOOGLE_API_KEY=sua_chave_aqui
+GOOGLE_SEARCH_API_KEY=sua_chave_search_aqui
+GOOGLE_SEARCH_ENGINE_ID=seu_engine_id_aqui
 ```
 
-4. **Execute o projeto:**
+5. **Execute o projeto:**
 ```bash
 npm run dev
 ```
